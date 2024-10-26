@@ -13,8 +13,6 @@ git clone git@github.com:jvsocial/tf-microk8s-on-aws.git
 cd tf-microk8s-on-aws
 ```
 
-````
-
 ### 2. Create a `terraform.tfvars` File
 
 In the root of the cloned repository, create a `terraform.tfvars` file to provide necessary variables for the Terraform configuration. Add your values for required variables, for example:
@@ -61,16 +59,16 @@ sudo microk8s kubectl get nodes
 # Check available services
 sudo microk8s kubectl get services
 
-# Scale the nginx deployment to 2 replicas (may be limited by instance capacity)
-sudo microk8s kubectl scale deployment nginx --replicas=2
+# Create an nginx deployment
+sudo microk8s kubectl create deployment nginx --image=nginx
 
-# Verify the nginx pods
+# Verify the nginx pod
 sudo microk8s kubectl get pods
 ```
 
 ### Additional Information
 
-- **Scaling Limitations:** Due to the limited resources of `t2.micro`, scaling workloads may not perform optimally, and Kubernetes pods may fail to deploy or may enter a pending state.
+- **Scaling Limitations:** Due to the limited resources of `t2.micro`, scaling workloads is not recommended. For instance, adding multiple replicas (e.g., scaling `nginx` to more than 1 pod) may result in pod failures or pending states due to insufficient memory and CPU.
 - **Destroy Resources**: To remove all resources, use `terraform destroy` in the project directory.
 
 This completes the setup for deploying MicroK8s on AWS using Terraform. Enjoy working with Kubernetes on your EC2 instance!
@@ -78,4 +76,3 @@ This completes the setup for deploying MicroK8s on AWS using Terraform. Enjoy wo
 ```
 
 ```
-````
