@@ -1,4 +1,3 @@
-````markdown
 # MicroK8s Terraform Deployment on AWS
 
 This repository contains Terraform configurations to deploy MicroK8s on an AWS EC2 instance. The setup includes the installation of MicroK8s, Kubernetes configuration, and an example deployment of an `nginx` service.
@@ -13,6 +12,7 @@ First, fork this repository to your GitHub account. Then, clone it locally:
 git clone git@github.com:jvsocial/tf-microk8s-on-aws.git
 cd tf-microk8s-on-aws
 ```
+
 ````
 
 ### 2. Create a `terraform.tfvars` File
@@ -78,3 +78,4 @@ This completes the setup for deploying MicroK8s on AWS using Terraform. Enjoy wo
 ```
 
 ```
+````
