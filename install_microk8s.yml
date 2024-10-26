@@ -1,0 +1,27 @@
+# install_microk8s.yml
+---
+- name: Install MicroK8s and configure access
+  hosts: localhost
+  become: yes
+  tasks:
+    
+    - name: Install MicroK8s
+      snap:
+        name: microk8s
+        classic: yes
+        state: present
+        channel: "1.31"
+
+    - name: Add user to MicroK8s group
+      user:
+        name: "{{ ansible_user_id }}"  # Assuming 'ubuntu' is the default user
+        groups: microk8s
+        append: yes
+
+    - name: Create .kube directory
+      file:
+        path: /home/{{ ansible_user_id }}/.kube
+        state: directory
+        mode: '0700'
+        owner: "{{ ansible_user_id }}"
+        recurse: yes
